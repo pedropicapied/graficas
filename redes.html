@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Encuesta sobre Redes Sociales</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .encuesta {
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007BFF;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="encuesta">
+        <h2>Encuesta sobre Redes Sociales</h2>
+        <form id="formulario">
+              <!-- Agrega más preguntas aquí -->
+              <p>1. ¿Usas las redes sociales?</p>
+              <input type="radio" id="pregunta2si" name="pregunta2" value="Si">
+              <label for="pregunta2si">Si</label><br>
+              <input type="radio" id="pregunta2no" name="pregunta2" value="No">
+              <label for="pregunta2no">No</label><br>
+              <!-- Fin del bloque -->
+
+            <p>2. ¿Cuál es tu red social favorita?</p>
+            <input type="radio" id="facebook" name="pregunta1" value="Facebook">
+            <label for="facebook">Facebook</label><br>
+            <input type="radio" id="twitter" name="pregunta1" value="Twitter">
+            <label for="twitter">Twitter</label><br>
+            <input type="radio" id="instagram" name="pregunta1" value="Instagram">
+            <label for="instagram">Instagram</label><br>
+            <input type="radio" id="otro" name="pregunta1" value="Otro">
+            <label for="otro">Otro</label><br>
+
+          
+            <!-- Agrega más preguntas aquí -->
+            <p>3. ¿Cuánto tiempo pasas en las redes sociales cada día?</p>
+            <input type="radio" id="menos1h" name="pregunta3" value="Menos de 1 hora">
+            <label for="menos1h">Menos de 1 hora</label><br>
+            <input type="radio" id="1a2h" name="pregunta3" value="1 a 2 horas">
+            <label for="1a2h">1 a 2 horas</label><br>
+            <input type="radio" id="2a4h" name="pregunta3" value="2 a 4 horas">
+            <label for="2a4h">2 a 4 horas</label><br>
+            <input type="radio" id="mas4h" name="pregunta3" value="Más de 4 horas">
+            <label for="mas4h">Más de 4 horas</label><br>
+
+            <p>4. ¿Has dejado de seguir a alguien debido a su contenido?</p>
+            <input type="radio" id="pregunta4si" name="pregunta4" value="Si">
+            <label for="pregunta4si">Si</label><br>
+            <input type="radio" id="pregunta4no" name="pregunta4" value="No">
+            <label for="pregunta4no">No</label><br>
+
+            <p>4. ¿Amas a tu mama?</p>
+            <input type="radio" id="pregunta5si" name="pregunta5" value="Si">
+            <label for="pregunta4si">Si</label><br>
+            <input type="radio" id="pregunta5no" name="pregunta5" value="No">
+            <label for="pregunta4no">No</label><br>
+            <!-- Fin del bloque -->
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+   <div>
+    <canvas id="grafica" style="display: none;"></canvas>
+   </div>
+  <div>
+    <canvas id="grafica2" style="display: none;"></canvas>
+  </div>
+  <div>
+    <canvas id="grafica3" style="display: none;"></canvas>
+  </div>
+   <div>
+    <canvas id="grafica4" style="display: none;"></canvas>
+   </div>
+
+   <div>
+    <canvas id="grafica5" style="display: none;"></canvas>
+   </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+     var ctx = document.getElementById('grafica').getContext('2d');
+var facebook = 0;
+var twitter = 0;
+var instagram = 0;
+var otro = 0;
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Facebook', 'Twitter', 'Instagram', 'Otro'],
+        datasets: [{
+            label: 'Resultados de la encuesta 1',
+            data: [facebook, twitter, instagram, otro],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)', 'rgba(153, 102, 255, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+var ctx2 = document.getElementById('grafica2').getContext('2d');
+var si = 0;
+var no = 0;
+var chart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['Si', 'No'],
+        datasets: [{
+            label: 'Resultados de la encuesta 2',
+            data: [si, no],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+var ctx3 = document.getElementById('grafica3').getContext('2d');
+var menos1h = 0;
+var _1a2h = 0;
+var _2a4h = 0;
+var mas4h = 0;
+var chart3 = new Chart(ctx3, {
+    type: 'bar',
+    data: {
+        labels: ['Menos de 1 hora', '1 a 2 horas', '2 a 4 horas', 'Más de 4 horas'],
+        datasets: [{
+            label: 'Resultados de la encuesta 3',
+            data: [menos1h, _1a2h, _2a4h, mas4h],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)', 'rgba(153, 102, 255, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+var ctx4 = document.getElementById('grafica4').getContext('2d');
+var si4 = 0;
+var no4 = 0;
+var chart4 = new Chart(ctx4, {
+    type: 'bar',
+    data: {
+        labels: ['Si', 'No'],
+        datasets: [{
+            label: 'Resultados de la encuesta 4',
+            data: [si4, no4],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+var ctx5 = document.getElementById('grafica5').getContext('2d');
+var si5 = 0;
+var no5 = 0;
+var chart5 = new Chart(ctx5, {
+    type: 'bar',
+    data: {
+        labels: ['Si', 'No'],
+        datasets: [{
+            label: 'Resultados de la encuesta 5',
+            data: [si5, no5],
+            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+document.getElementById('formulario').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var respuesta = document.querySelector('input[name="pregunta1"]:checked').value;
+    if (respuesta == 'Facebook') {
+        facebook++;
+    } else if (respuesta == 'Twitter') {
+        twitter++;
+    } else if (respuesta == 'Instagram') {
+        instagram++;
+    } else {
+        otro++;
+    }
+    chart.data.datasets[0].data = [facebook, twitter, instagram, otro];
+    chart.update();
+    document.getElementById('grafica').style.display = 'block';
+
+    var consumo = document.querySelector('input[name="pregunta2"]:checked').value;
+    if (consumo == 'Si') {
+        si++;
+    } else {
+        no++;
+    }
+    chart2.data.datasets[0].data = [si, no];
+    chart2.update();
+    document.getElementById('grafica2').style.display = 'block';
+
+    var tiempo = document.querySelector('input[name="pregunta3"]:checked').value;
+    if (tiempo == 'Menos de 1 hora') {
+        menos1h++;
+    } else if (tiempo == '1 a 2 horas') {
+        _1a2h++;
+    } else if (tiempo == '2 a 4 horas') {
+        _2a4h++;
+    } else {
+        mas4h++;
+    }
+    chart3.data.datasets[0].data = [menos1h, _1a2h, _2a4h, mas4h];
+    chart3.update();
+    document.getElementById('grafica3').style.display = 'block';
+
+    var unfollow = document.querySelector('input[name="pregunta4"]:checked').value;
+    if (unfollow == 'Si') {
+        si4++;
+    } else {
+        no4++;
+    }
+    chart4.data.datasets[0].data = [si4, no4];
+    chart4.update();
+    document.getElementById('grafica4').style.display = 'block';
+
+
+var amor = document.querySelector('input[name="pregunta5"]:checked').value;
+    if (unfollow == 'Si') {
+        si5++;
+    } else {
+        no5++;
+    }
+    chart5.data.datasets[0].data = [si5, no5];
+    chart5.update();
+    document.getElementById('grafica5').style.display = 'block';
+});
+
+        
+    </script>
+</body>
+
+</html>
